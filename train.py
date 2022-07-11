@@ -134,6 +134,7 @@ if __name__ == '__main__':
 
     name = config['name']
     file_name = args.config
+    file_name = file_name.replace('\\', '/')  # for windows
     file_name = file_name[file_name.rindex('/') + 4:-5]  # remove path
     if name != file_name:
         raise Exception(
