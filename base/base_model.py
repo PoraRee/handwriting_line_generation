@@ -1,4 +1,4 @@
-#from https://github.com/victoresque/pytorch-template
+# from https://github.com/victoresque/pytorch-template
 import logging
 import torch.nn as nn
 import numpy as np
@@ -8,6 +8,7 @@ class BaseModel(nn.Module):
     """
     Base class for all models
     """
+
     def __init__(self, config):
         super(BaseModel, self).__init__()
         self.config = config

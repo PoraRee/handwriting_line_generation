@@ -1,4 +1,4 @@
-#from https://github.com/victoresque/pytorch-template
+# from https://github.com/victoresque/pytorch-template
 import json
 
 
@@ -9,6 +9,7 @@ class Logger:
     Note:
         Used by BaseTrainer to save training history.
     """
+
     def __init__(self):
         self.entries = {}
 

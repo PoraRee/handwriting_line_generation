@@ -1,4 +1,4 @@
-#from https://github.com/victoresque/pytorch-template
+# from https://github.com/victoresque/pytorch-template
 from copy import copy
 import numpy as np
 
@@ -7,6 +7,7 @@ class BaseDataLoader:
     """
     Base class for all data loaders
     """
+
     def __init__(self, config):
         self.config = config
         self.batch_size = config['data_loader']['batch_size']
@@ -29,7 +30,8 @@ class BaseDataLoader:
         """
         packed = self._pack_data()
         if self.batch_idx < self.__len__():
-            batch = packed[self.batch_idx * self.batch_size:(self.batch_idx + 1) * self.batch_size]
+            batch = packed[self.batch_idx * \
+                self.batch_size:(self.batch_idx + 1) * self.batch_size]
             self.batch_idx = self.batch_idx + 1
             return self._unpack_data(batch)
         else:
