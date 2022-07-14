@@ -53,7 +53,7 @@ class AutoTrainer(BaseTrainer):
         self.no_bg_loss = False
 
         char_set_path = config['data_loader']['char_file']
-        with open(char_set_path) as f:
+        with open(char_set_path, encoding='utf-8') as f:
             char_set = json.load(f)
         self.idx_to_char = {}
         self.num_class = len(char_set['idx_to_char']) + 1

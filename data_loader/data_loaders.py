@@ -4,6 +4,7 @@ import numpy as np
 from datasets import hw_dataset
 from datasets import author_hw_dataset
 from datasets import author_rimeslines_dataset
+from datasets import author_best_dataset
 from base import BaseDataLoader
 
 
@@ -58,6 +59,18 @@ def getDataLoader(config, split):
         return withCollate(
             author_rimeslines_dataset.AuthorRIMESLinesDataset,
             author_rimeslines_dataset.collate,
+            batch_size,
+            valid_batch_size,
+            shuffle,
+            shuffleValid,
+            numDataWorkers,
+            split,
+            data_dir,
+            config)
+    elif data_set_name == 'AuthorBESTDataset':
+        return withCollate(
+            author_best_dataset.AuthorBESTDataset,
+            author_best_dataset.collate,
             batch_size,
             valid_batch_size,
             shuffle,

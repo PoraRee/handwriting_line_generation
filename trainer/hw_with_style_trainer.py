@@ -72,7 +72,7 @@ class HWWithStyleTrainer(BaseTrainer):
         self.valid = True if self.valid_data_loader is not None else False
 
         char_set_path = config['data_loader']['char_file']
-        with open(char_set_path) as f:
+        with open(char_set_path, encoding='utf-8') as f:
             char_set = json.load(f)
         self.idx_to_char = {}
         self.num_class = len(char_set['idx_to_char']) + 1
@@ -843,7 +843,7 @@ class HWWithStyleTrainer(BaseTrainer):
             # hinge loss
             disc_loss = 0
             for i in range(len(discriminator_pred)
-                           ): # iterate over different disc losses (resolutions)
+                           ):  # iterate over different disc losses (resolutions)
                 discriminator_pred_on_real = discriminator_pred[i][:image.size(
                     0)]
                 discriminator_pred_on_fake = discriminator_pred[i][image.size(
@@ -988,7 +988,8 @@ class HWWithStyleTrainer(BaseTrainer):
         for i in range(1, pred_len + 1):
             for j in range(max(1, i - w), min(label_len, i + w) + 1):
                 cost = 1 - \
-                    pred_use[i - 1, torch.arange(0, batch_size).long(), label_with_blanks[j - 1, :]]
+                    pred_use[i - 1, torch.arange(0, batch_size).long(),
+                             label_with_blanks[j - 1, :]]
                 per_batch_min, history[i -
                                        1, j -
                                        1] = torch.min(torch.stack((dtw[i -
